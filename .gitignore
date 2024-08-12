@@ -23,6 +23,8 @@ logs
 
 # dotenv environment variables file
 .env
+.env.local
+.env.*.local
 
 # MacOS files
 .DS_Store
@@ -41,3 +43,40 @@ coverage/
 
 # Exclude all ZIP files from the root folder
 /*.zip
+
+# AWS config files
+aws-config.json
+aws-exports.js
+awsconfiguration.json
+
+# IDE files
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Config files with potential secrets
+config.ts
+config.js
+
+# Local SSL certificates
+*.pem
+*.key
+*.crt
+
+# System Files
+Thumbs.db
+
+# Cordova
+/platforms
+/plugins
+
+# Ionic
+.ionic/
+www/

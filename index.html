@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapShot S3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/styles/styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <h1>SnapShot S3</h1>
+        <video id="camera-feed" autoplay playsinline></video>
+        <canvas id="capture-canvas" style="display: none;"></canvas>
+        <button id="capture-button">Take Picture</button>
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1668.0.min.js"></script>
+    <script src="dist/scripts/app.js" type="module"></script>
+</body>
+</html>

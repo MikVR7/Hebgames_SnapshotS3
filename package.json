@@ -1,0 +1,52 @@
+{
+  "name": "snapshot-s3",
+  "version": "1.0.0",
+  "description": "A web app that captures images from the device camera and uploads them to AWS S3.",
+  "main": "index.html",
+  "scripts": {
+    "build": "tsc && npm run copy-files",
+    "build:ts": "tsc",
+    "copy-files": "copyfiles -u 1 \"src/**/*.html\" \"src/**/*.css\" dist && copyfiles index.html dist",
+    "start": "npm run build && http-server dist",
+    "watch": "tsc --watch",
+    "dev": "concurrently \"npm run watch\" \"npm run start\"",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
+    "postinstall": "npm run build"
+  },
+  "keywords": [
+    "camera",
+    "snapshot",
+    "aws-s3",
+    "web-app",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.45.0",
+    "http-server": "^14.1.1",
+    "jest": "^29.6.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "amazon-cognito-identity-js": "^6.3.12",
+    "aws-sdk": "^2.1668.0",
+    "dotenv": "^16.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikVR7/Hebgames_SnapshotS3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MikVR7/Hebgames_SnapshotS3/issues"
+  },
+  "homepage": "https://github.com/MikVR7/Hebgames_SnapshotS3#readme"
+}
