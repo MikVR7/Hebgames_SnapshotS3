@@ -17,7 +17,34 @@ class App {
 
     private async init(): Promise<void> {
         try {
-            await this.cameraManager.initCamera();
+            const cameras = await this.cameraManager.listCameras();
+            if (cameras.length === 0) {
+                throw new Error('No cameras found');
+            }
+
+            // Create a select element for camera selection
+            const select = document.createElement('select');
+            select.id = 'camera-select';
+            cameras.forEach((camera, index) => {
+                const option = document.createElement('option');
+                option.value = camera.deviceId;
+                option.text = camera.label || `Camera ${index + 1}`;
+                select.appendChild(option);
+            });
+
+            // Add the select element to the page
+            const appContainer = document.getElementById('app-container');
+            appContainer?.insertBefore(select, appContainer.firstChild);
+
+            // Initialize with the first camera
+            await this.cameraManager.initCamera(cameras[0].deviceId);
+
+            // Add event listener for camera selection
+            select.addEventListener('change', async (event) => {
+                const target = event.target as HTMLSelectElement;
+                await this.cameraManager.initCamera(target.value);
+            });
+
             this.captureButton.addEventListener('click', this.handleCapture.bind(this));
             this.captureButton.disabled = false;
         } catch (error) {
@@ -31,8 +58,9 @@ class App {
 
         try {
             const imageBlob = await this.cameraManager.captureImage();
-            await this.imageUploader.uploadImage(imageBlob);
-            this.showMessage('Image captured and uploaded successfully!', 'success');
+            const imageUrl = await this.imageUploader.uploadImage(imageBlob);
+            this.showMessage(`Image captured and uploaded successfully! URL: ${imageUrl}`, 'success');
+            console.log('Uploaded image URL:', imageUrl);
         } catch (error: unknown) {
             console.error('Error capturing or uploading image:', error);
             if (error instanceof Error) {

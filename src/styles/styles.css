@@ -1,18 +1,13 @@
-body {
-    font-family: 'Roboto', sans-serif;
+body, html {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 #app-container {
     position: relative;
     width: 100%;
-    max-width: 500px;
     height: 100vh;
     overflow: hidden;
 }
@@ -55,10 +50,14 @@ h1 {
 }
 
 .message {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 10px;
-    margin-bottom: 10px;
     border-radius: 5px;
     text-align: center;
+    max-width: 80%;
 }
 
 .message.info {
