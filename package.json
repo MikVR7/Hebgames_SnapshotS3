@@ -38,7 +38,7 @@
   "dependencies": {
     "@types/aws-sdk": "^2.7.0",
     "amazon-cognito-identity-js": "^6.3.12",
-    "aws-sdk": "^2.1668.0",
+    "aws-sdk": "^2.1680.0",
     "dotenv": "^16.4.5"
   },
   "repository": {
